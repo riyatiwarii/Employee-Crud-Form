@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+
+@layer components {
+    .input-style{
+        @apply bg-gray-50 border border-gray-300 text-form-base text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+    }
+
+    .label-style{
+        @apply block mb-2 text-sm font-medium text-form-base dark:text-gray-300
+    }
+}
+
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-text-base: 255, 255, 255;
+        --color-text-muted: 199, 210, 254;
+        --color-fill : 99, 102, 241;
+        --color-fillstop: 79, 70, 229;
+        --color-button-accent : 99, 102, 241;
+        --color-button-accent-hover : 79, 70, 229;
+        --color-textinput-base: 17, 24, 39;
+    }
+
+    .theme-red {
+        --color-text-base: 255, 255, 255;
+        --color-text-muted: 199, 210, 254;
+        --color-fill : 239, 68, 68;
+        --color-fillstop: 79, 70, 229;
+        --color-button-accent : 239, 68, 68;
+        --color-button-accent-hover : 220, 38, 38;
+        --color-textinput-base: 17, 24, 39;
+    }
+
+    .theme-purple{
+        --color-text-base: 255, 255, 255;
+        --color-text-muted: 199, 210, 254;
+        --color-fill : 168, 85, 247;
+        --color-fillstop: 79, 70, 229;
+        --color-button-accent : 168, 85, 247;
+        --color-button-accent-hover : 147, 51, 234;
+        --color-textinput-base: 17, 24, 39;
+    }
+    
+}
+
+
+
+
+
+
