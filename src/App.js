@@ -1,9 +1,8 @@
-import Form from './components/Form';
-import EditEmployee from './components/EditEmployee';
 import { createBrowserRouter, Outlet } from "react-router-dom"
 import Home from './components/Home';
 import { Provider } from 'react-redux';
 import store from './Store';
+import AddEditForm from './components/AddEditForm';
 
 const App = () => {
 
@@ -25,11 +24,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <Form/>
+        element: <AddEditForm/>
       },
       {
         path: "/edit/:id",
-        element: <EditEmployee/>
+        element: <AddEditForm/>
       }
     ]
   }
