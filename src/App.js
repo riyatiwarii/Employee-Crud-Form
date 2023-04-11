@@ -2,14 +2,15 @@ import Form from './components/Form';
 import EditEmployee from './components/EditEmployee';
 import { createBrowserRouter, Outlet } from "react-router-dom"
 import Home from './components/Home';
-
+import { Provider } from 'react-redux';
+import store from './Store';
 
 const App = () => {
 
   return (
-    <>
+    <Provider store={store}>
       <Outlet/>
-    </>
+    </Provider>
   );
 }
 
@@ -27,7 +28,7 @@ const appRouter = createBrowserRouter([
         element: <Form/>
       },
       {
-        path: "/edit",
+        path: "/edit/:id",
         element: <EditEmployee/>
       }
     ]

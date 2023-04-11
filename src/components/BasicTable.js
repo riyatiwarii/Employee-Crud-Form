@@ -1,24 +1,21 @@
-import React, {useEffect, useMemo, useState} from "react"
+import React, {useMemo} from "react"
 import { useTable, useSortBy, useFilters, usePagination } from "react-table"
 import {COLUMNS} from "./columns"
-import useItemAction from '../hooks/useItemAction';
 import './table.css'
 import { ColumnFilter } from "./ColumnFilter";
+import { useSelector } from "react-redux";
 
 const BasicTable = () => {
-    const [employeeData] = useItemAction()
-    // const [data, setData] = useState([])
-    // useEffect(() => {setData(JSON.parse(localStorage.getItem('employees')))}, [employeeData])
-    const data = useMemo(() => employeeData, [employeeData])
-    const columns = useMemo(() => COLUMNS, [data])
-    console.log(data, employeeData);
-    
-
+    const users = useSelector((state) => state.users)
+    console.log(users);
+    const columns = useMemo(() => COLUMNS, [])
+    const data = useMemo(() => users, [users])
     const defaultColumn = useMemo(() => {
         return{
             Filter: ColumnFilter
         }
     }, [])
+
     const {getTableProps, getTableBodyProps, headerGroups, page, nextPage, previousPage, canNextPage, canPreviousPage, pageOptions, gotoPage, pageCount, setPageSize, state, prepareRow} = useTable({columns, data, defaultColumn}, useFilters, useSortBy, usePagination)
     
     const {pageIndex, pageSize} = state

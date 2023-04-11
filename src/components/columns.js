@@ -1,7 +1,7 @@
 import { Link} from "react-router-dom";
-import useItemAction from "../hooks/useItemAction";
 import { format } from 'date-fns'
-
+import { deleteUser } from "../UserReducer";
+import { useDispatch } from "react-redux";
 
 export const COLUMNS = [
     {
@@ -47,19 +47,21 @@ export const COLUMNS = [
         display: "actions",
         disableFilters: true,
         Cell: (props) => {
-        const [employeeData, deleteEmployee, setDataToStorage] = useItemAction()
-        const rowIdx = parseInt(props.row.id);
+        const rowIdx = parseInt(props.row.id) + 1;
+        const dispatch = useDispatch();
+        const handleDelete = (id) => {
+            console.log(id);
+            dispatch(deleteUser(id))
+            
+          }
+        
         return (
             <div>
-                <button type="button" className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline" onClick={() =>
-                {
-                const rowIdx = parseInt(props.row.id) + 1;
-                setDataToStorage(rowIdx, props.row.original.e_firstName, props.row.original.e_lastName, props.row.original.e_gender, props.row.original.e_date, props.row.original.e_email, props.row.original.e_phone)
-                }}><Link to="/edit">Edit</Link></button>
+                <button type="button" className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"><Link to={`/edit/${rowIdx}`}>Edit</Link></button>
                 <button type="button" className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline" onClick={() => {
                     console.log(rowIdx)
                     if(window.confirm('Are you sure to delete data?')){
-                      deleteEmployee(rowIdx)  
+                      handleDelete(parseInt(props.row.id))  
                                       
                     }}}>Delete</button>
             </div>
